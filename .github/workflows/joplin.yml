@@ -1,0 +1,39 @@
+name: Get Wiki contents from Joplin
+
+on:
+  push:
+    branches: [ "master" ]
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22.x]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - name: Login and sync Joplin Wiki notebook
+      env:
+        JOPLIN_CONFIG: ${{ secrets.JOPLIN_CONFIG }}
+      run: |
+        echo "$JOPLIN_CONFIG" | npx joplin config --import
+        npx joplin sync
+        rm -rf src/
+        npx joplin export --format md --notebook Wiki src/
+    - name: Build mdbook summary
+      run: ./generate_summary.py
+
+    - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
+      with:
+        add: 'src'
+        default_author: github_actions
+        message: 'Sync wiki contents with upstream'
+        pathspec_error_handling: exitImmediately
