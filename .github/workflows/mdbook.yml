@@ -3,10 +3,6 @@ name: Deploy mdBook site to Pages
 on:
   push:
     branches: [ "master" ]
-  workflow_run:
-    workflows: ['Get Wiki contents from Joplin']
-    strategy: resolve-on-first
-    types: [completed]
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -18,7 +14,7 @@ permissions:
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
