@@ -2,7 +2,6 @@
 
 [Introduction](Wiki/README.md)
 
-- [home.md](Wiki/home.md)
 - [steam-deck.md](Wiki/steam-deck.md)
 - [fixes.md](Wiki/fixes.md)
 - [programming](Wiki/programming/README.md)
