@@ -28,7 +28,7 @@ jobs:
       run: |
         npx joplin config sync.target 9
         npx joplin config sync.9.path "$JOPLIN_PATH"
-        npx joplin config sync.9.user "$JOPLIN_USER"
+        npx joplin config sync.9.username "$JOPLIN_USER"
         npx joplin config sync.9.password "$JOPLIN_PASSWORD"
         npx joplin sync
         rm -rf src/
