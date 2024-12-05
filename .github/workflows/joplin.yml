@@ -22,9 +22,14 @@ jobs:
         cache: 'npm'
     - name: Login and sync Joplin Wiki notebook
       env:
-        JOPLIN_CONFIG: ${{ secrets.JOPLIN_CONFIG }}
+        JOPLIN_PATH: ${{ secrets.JOPLIN_PATH }}
+        JOPLIN_USER: ${{ secrets.JOPLIN_USER }}
+        JOPLIN_PASSWORD: ${{ secrets.JOPLIN_PASSWORD }}
       run: |
-        echo "$JOPLIN_CONFIG" | npx joplin config --import
+        npx joplin config sync.target 9
+        npx joplin config sync.9.path "$JOPLIN_PATH"
+        npx joplin config sync.9.user "$JOPLIN_USER"
+        npx joplin config sync.9.password "$JOPLIN_PASSWORD"
         npx joplin sync
         rm -rf src/
         npx joplin export --format md --notebook Wiki src/
