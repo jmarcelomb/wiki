@@ -1,6 +1,17 @@
-# JoaoCostaIFG wiki
+# Marcelo's wiki
 
-[Access the Wiki here](https://wiki.joaocosta.dev)
+[Access the Wiki here](https://wiki.marceloborges.dev)
+
+## License
+
+Code is MIT.
+Wiki content is [Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
+
+## Acknowledgment
+
+A special thanks to [@JoaoCostaIFG](https://www.github.com/JoaoCostaIFG) for this.
+
+Everything under is his journey and tutorial to use this repository.
 
 ## What/Why
 
@@ -36,7 +47,3 @@ This happens once a day at midnight (UTC). The contents of the repo are somethin
 
 The step that builds the mdBook is on a [separate action](./.github/workflows/mdbook.yml). If you want to build another kind of site, for example a personal blog, you can change this action to build something else. There's a bunch of Github actions already setup for that.
 
-## License
-
-Code is MIT.
-Wiki content is [Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
