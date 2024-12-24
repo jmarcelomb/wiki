@@ -2,6 +2,6 @@
 
 [Introduction](Wiki/README.md)
 
-- [linux test.md](Wiki/linux test.md)
-- [[how]to-be-happy.md](Wiki/[how]to-be-happy.md)
-- [Divinal.md](Wiki/Divinal.md)
+- [Linux](Wiki/Linux/README.md)
+	- [get-current-bash-script-dir.md](Wiki/Linux/get-current-bash-script-dir.md)
+	- [git-submodules-cmds.md](Wiki/Linux/git-submodules-cmds.md)
