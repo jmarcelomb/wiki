@@ -2,8 +2,13 @@ name: Deploy mdBook site to Pages
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   workflow_dispatch:
+  workflow_run:
+    workflows:
+      - Get Wiki contents from Joplin
+    types:
+      - completed
 
 permissions:
   contents: read
