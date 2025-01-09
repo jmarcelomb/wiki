@@ -5,6 +5,7 @@
 	- [Programming](src/Wiki/Programming/README.md)
 		- [Keil.md](Wiki/Programming/Keil.md)
 		- [CMake.md](Wiki/Programming/CMake.md)
+		- [neovim.md](Wiki/Programming/neovim.md)
 		- [docker-multi-stage-builds.md](Wiki/Programming/docker-multi-stage-builds.md)
 	- [Life](src/Wiki/Life/README.md)
 		- [paperless-document-types.md](Wiki/Life/paperless-document-types.md)
