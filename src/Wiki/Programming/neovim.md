@@ -37,3 +37,13 @@ Another common pattern is `:g/pattern/norm! @q` to execute once on each line tha
 ```bash
 :earlier 1m
 ```
+
+## Motions
+
+`f`(ind) - find forward
+`F`(ind) - find backwards
+Example: `f,` - `f`(ind) comma
+
+`t`(il) - Til forward
+`T`(il) - Til backwards
+Example: `yt,` - yank `t`(il) comma
