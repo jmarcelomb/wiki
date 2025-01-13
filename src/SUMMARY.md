@@ -15,6 +15,8 @@
 			- [cli.md](Wiki/Programming/Linux/cli.md)
 			- [git-cmds.md](Wiki/Programming/Linux/git-cmds.md)
 			- [get-current-bash-script-dir.md](Wiki/Programming/Linux/get-current-bash-script-dir.md)
+		- [Rust](src/Wiki/Programming/Rust/README.md)
+			- [cargo-update.md](Wiki/Programming/Rust/cargo-update.md)
 		- [C++](src/Wiki/Programming/C++/README.md)
 			- [crtp-example.md](Wiki/Programming/C++/crtp-example.md)
 			- [RValues-and-LValues.md](Wiki/Programming/C++/RValues-and-LValues.md)
