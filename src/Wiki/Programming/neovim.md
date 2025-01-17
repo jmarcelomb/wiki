@@ -38,6 +38,10 @@ Another common pattern is `:g/pattern/norm! @q` to execute once on each line tha
 :earlier 1m
 ```
 
+## Insert commands with r(ead)
+In command mode you can do `:r ! terminal_command`. `r` is the short version of the command `read`.
+For example, if you do `r: ! ls` It will append the `ls` content in the current cursor position or selection. 
+
 ## Motions
 
 `f`(ind) - find forward
