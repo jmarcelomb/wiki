@@ -1,4 +1,10 @@
 ---
+*Datetime:* 26/01/2025 21:45
+
+	"Curiority may have killed the cat, but I have that dog in me 🐺"
+	- TJ
+
+---
 *Datetime:* 26/12/2024 00:00
 
 	"You can't control the wind, but you can adjust your sails"
