@@ -22,6 +22,7 @@
 			- [git-cmds.md](Wiki/Programming/Linux/git-cmds.md)
 			- [cross-compilation-kernel.md](Wiki/Programming/Linux/cross-compilation-kernel.md)
 			- [nixos.md](Wiki/Programming/Linux/nixos.md)
+			- [rsync.md](Wiki/Programming/Linux/rsync.md)
 			- [get-current-bash-script-dir.md](Wiki/Programming/Linux/get-current-bash-script-dir.md)
 			- [i3wm.md](Wiki/Programming/Linux/i3wm.md)
 			- [cli.md](Wiki/Programming/Linux/cli.md)
