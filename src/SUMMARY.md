@@ -3,6 +3,7 @@
 - [Introduction](Wiki/README.md)
 
 	- [Programming](src/Wiki/Programming/README.md)
+		- [git-cmds.md](Wiki/Programming/git-cmds.md)
 		- [CMake.md](Wiki/Programming/CMake.md)
 		- [Keil.md](Wiki/Programming/Keil.md)
 		- [docker-multi-stage-builds.md](Wiki/Programming/docker-multi-stage-builds.md)
@@ -19,7 +20,6 @@
 			- [rule-of-three-and-zero.md](Wiki/Programming/C++/rule-of-three-and-zero.md)
 			- [compiler-explorer.md](Wiki/Programming/C++/compiler-explorer.md)
 		- [Linux](src/Wiki/Programming/Linux/README.md)
-			- [git-cmds.md](Wiki/Programming/Linux/git-cmds.md)
 			- [cross-compilation-kernel.md](Wiki/Programming/Linux/cross-compilation-kernel.md)
 			- [nixos.md](Wiki/Programming/Linux/nixos.md)
 			- [rsync.md](Wiki/Programming/Linux/rsync.md)
