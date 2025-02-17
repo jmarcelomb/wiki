@@ -18,6 +18,7 @@
 		- [Linux](src/Wiki/Programming/Linux/README.md)
 			- [rsync.md](Wiki/Programming/Linux/rsync.md)
 			- [nixos.md](Wiki/Programming/Linux/nixos.md)
+			- [How-to-install-nix-in-MacOS.md](Wiki/Programming/Linux/How-to-install-nix-in-MacOS.md)
 			- [cross-compilation-kernel.md](Wiki/Programming/Linux/cross-compilation-kernel.md)
 			- [get-current-bash-script-dir.md](Wiki/Programming/Linux/get-current-bash-script-dir.md)
 			- [cli.md](Wiki/Programming/Linux/cli.md)
