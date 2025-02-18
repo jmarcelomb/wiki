@@ -1,4 +1,13 @@
 ---
+*Datetime:* 17/02/2025 21:30
+
+	"What you're not changing, you're choosing."
+---
+*Datetime:* 13/02/2025 
+
+	"A person often meets his destiny on the road he took to avoid it"
+	- Hubslife
+---
 *Datetime:* 26/01/2025 21:45
 
 	"Curiority may have killed the cat, but I have that dog in me 🐺"
