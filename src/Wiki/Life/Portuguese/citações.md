@@ -1,6 +1,6 @@
 *Datetime:* 18/02/2025
 
-	"Eu durmop quando for velha e já não tiver esta pedalada e curiosidade galopantes; até lá, vou viver."
+	"Eu durmo quando for velha e já não tiver esta pedalada e curiosidade galopantes; até lá, vou viver."
 	- Cicatriz
 ---
 *Datetime:* 26/12/2024
