@@ -7,20 +7,20 @@ To access my Neovim config [click here.](https://github.com/jmarcelomb/nvim)
 ## Execute normal mode commands using text:
 We can execute commands using `normal` or `norm` for short:
 
-```bash
+```
 :norm[al][!] {commands}
 ```
 
 If the `!` is given, mappings will not be used. Without it, when this command is called from a non-remappable mapping (|:noremap|), the argument can be mapped anyway.
 
-```bash
+```
 :normal ! yyp
 :norm ! itest
 ```
 
 Once Vim enters insert mode with the i in `itest<esc>` all bets are off and printable characters lose their special functions. To get an `<Esc>` within your `:normal`, you need to either use `<C-V><Esc>` (literally type Ctrl+V followed by the Escape key) or alternatively use `:execute` plus backslash escaping:
 
-```bash
+```
 :exe "norm itest\<esc>"
 :exe "norm i\<cr>another\<cr>example\<esc>yipP"
 ```
@@ -34,7 +34,7 @@ Another common pattern is `:g/pattern/norm! @q` to execute once on each line tha
 
 ## Go back in time (`:earlier`)
 
-```bash
+```
 :earlier 1m
 ```
 
@@ -51,3 +51,49 @@ Example: `f,` - `f`(ind) comma
 `t`(il) - Til forward
 `T`(il) - Til backwards
 Example: `yt,` - yank `t`(il) comma
+
+`*` - forward search of word under the cursor
+`#` - backwards search of word under the cursor
+
+---
+## Delete all lines containing a pattern
+
+The command `g` is very useful for acting on lines that match a pattern. You can use it with the `d` command, to delete all lines that contain a particular pattern, or all lines that do not contain a pattern.
+
+For example, to delete all lines containing *"profile"* (remove the `/d` to show the lines that the command will delete):
+
+```
+:g/profile/d
+```
+
+More complex patterns can be used, such as deleting all lines that are empty or that contain only whitespace:
+
+```
+:g/^\s*$/d
+```
+
+To delete all lines that do not contain a pattern, use `g!`, like this command to delete all lines that are not comment lines in a Vim script:
+
+```
+:g!/^\s*"/d
+```
+
+Note that g! is equivalent to `v`, so you could also do the above with:
+
+```
+:v/^\s*"/d
+```
+
+The next example shows use of `\|` ("or") to delete all lines except those that contain *"error"* or *"warn"* or *"fail"* (`:help pattern`):
+
+```
+:v/error\|warn\|fail/d
+```
+
+`g` can also be combined with a range to restrict it to certain lines only. For example to delete all lines containing *"profile"* from the current line to the end of the file:
+
+```
+:.,$g/profile/d
+```
+
+Reference [here](https://vim.fandom.com/wiki/Delete_all_lines_containing_a_pattern).
