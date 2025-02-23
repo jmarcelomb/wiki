@@ -32,3 +32,4 @@
 			- [rule-of-three-and-zero.md](Wiki/Programming/C++/rule-of-three-and-zero.md)
 		- [Rust](src/Wiki/Programming/Rust/README.md)
 			- [cargo-update.md](Wiki/Programming/Rust/cargo-update.md)
+			- [esp-rs.md](Wiki/Programming/Rust/esp-rs.md)
