@@ -10,6 +10,7 @@
 		- [neovim.md](Wiki/Programming/neovim.md)
 		- [git-cmds.md](Wiki/Programming/git-cmds.md)
 		- [Keil.md](Wiki/Programming/Keil.md)
+		- [learning-resources.md](Wiki/Programming/learning-resources.md)
 		- [English](src/Wiki/Life/English/README.md)
 			- [quotes.md](Wiki/Life/English/quotes.md)
 		- [Portuguese](src/Wiki/Life/Portuguese/README.md)
