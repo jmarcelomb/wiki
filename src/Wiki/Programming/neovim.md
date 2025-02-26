@@ -55,6 +55,8 @@ Example: `yt,` - yank `t`(il) comma
 `*` - forward search of word under the cursor
 `#` - backwards search of word under the cursor
 
+`gv` - starts visual mode with the previous visual selection. This is useful if you mess up some command, you just u to undo and gv to reselect and try again, or if you want to perform multiple operations on the same visual block
+
 ---
 ## Delete all lines containing a pattern
 
