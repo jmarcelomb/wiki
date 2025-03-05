@@ -1,4 +1,31 @@
 ---
+*Datetime:* 04/03/2025 11:00
+
+	"It’s okay to have feelings, you know. Things that aren’t logical. Science makes us understand how to stay alive longer. Feelings give us the reason to want to."
+	
+	"Live your life as if there’s no tomorrow, and then you wake up and there is a tomorrow and you do it again."
+	
+	"Women are better than men. And they never stop trying to bring us up to their standard."
+	
+	"Happiness is amazing. It’s so amazing, it doesn’t matter if it’s yours or not."
+	
+	"You can’t change the world, but you can change yourself."
+	
+	"Life is precious because you can’t watch it again. I mean, you can believe in an afterlife if that makes you feel better. Doesn’t mean it’s true. But once you realize you’re not gonna be around forever, I think that’s what makes life so magical. One day you’ll eat your last meal, smell your last flower, hug your friend for the very last time. You might not know it’s the last time, so that’s why you should do everything you love with passion, you know? Treasure the few years you’ve got because that’s all there is."
+	
+	"Nothing's as good if you don't share it."
+	
+	"A society grows great when old men plant tree whose shade they know they shall never sit in."
+	
+	"Hope is everything."
+	
+	"My dad used to say:
+	Life is like a ride at the fair. Exciting, scary, fast. And you can only go round once. You have the best time till you can’t take any more. Then it slows down, and you see someone else waiting to get on. They need your seat."
+
+	"There are no bad dogs, just bad owners. If you treat a dog bad and show them no love, that’s what they act like. If you show them kindness and hope, they’re fine. It’s the same with people."
+
+	-After Life TV show
+---
 *Datetime:* 17/02/2025 21:30
 
 	"What you're not changing, you're choosing."

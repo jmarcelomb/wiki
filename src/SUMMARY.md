@@ -29,6 +29,7 @@
 		- [Linux](src/Wiki/Programming/Linux/README.md)
 			- [get-current-bash-script-dir.md](Wiki/Programming/Linux/get-current-bash-script-dir.md)
 			- [cross-compilation-kernel.md](Wiki/Programming/Linux/cross-compilation-kernel.md)
+			- [promox.md](Wiki/Programming/Linux/promox.md)
 			- [i3wm.md](Wiki/Programming/Linux/i3wm.md)
 			- [rsync.md](Wiki/Programming/Linux/rsync.md)
 			- [cli.md](Wiki/Programming/Linux/cli.md)
