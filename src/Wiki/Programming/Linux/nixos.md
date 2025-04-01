@@ -64,3 +64,12 @@ sudo nix-collect-garbage -d
 # As a separation of concerns - you will need to run this command to clean out boot
 sudo /run/current-system/bin/switch-to-configuration boot
 ```
+
+# NixGL
+
+All the programs I have that require gpu acceleration have a module option for it, but I suppose if it doesnt, you could always just wrap the program with a script that runs it with nixGL for you XD Something like the below, then put someprogram in your packages list instead of the actual package
+
+```nix
+someprogram = pkgs.writeShellScriptBin "someprogram" ''
+${nixGL} ${pkgs.someprogram}/bin/someprogram "$@"'';
+```
