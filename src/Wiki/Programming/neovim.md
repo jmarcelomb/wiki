@@ -58,6 +58,26 @@ Example: `yt,` - yank `t`(il) comma
 `gv` - starts visual mode with the previous visual selection. This is useful if you mess up some command, you just u to undo and gv to reselect and try again, or if you want to perform multiple operations on the same visual block
 
 ---
+## Regex pattern to register
+
+You can do this with a substitute command.
+
+```
+:%s/regex/\=setreg('A', submatch(0))/n
+```
+
+This will append register a to whatever the regex matched. The n flag will run the command in a sandbox so nothing will actually get replaced but the side effects of the statement will happen.
+
+You probably want to empty the register first with
+```
+:let @a=''
+```
+
+If you want to place a new line in-between each match:
+```
+:let @a='' | %s/regex/\=setreg('A', submatch(0) . "\n")/n 
+```
+---
 ## Delete all lines containing a pattern
 
 The command `g` is very useful for acting on lines that match a pattern. You can use it with the `d` command, to delete all lines that contain a particular pattern, or all lines that do not contain a pattern.
