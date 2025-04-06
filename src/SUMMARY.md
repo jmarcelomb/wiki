@@ -8,6 +8,7 @@
 		- [docker-multi-stage-builds.md](Wiki/Programming/docker-multi-stage-builds.md)
 		- [learning-resources.md](Wiki/Programming/learning-resources.md)
 		- [git-cmds.md](Wiki/Programming/git-cmds.md)
+		- [nix-darwin.md](Wiki/Programming/nix-darwin.md)
 		- [Keil.md](Wiki/Programming/Keil.md)
 		- [neovim.md](Wiki/Programming/neovim.md)
 		- [CMake.md](Wiki/Programming/CMake.md)
