@@ -35,4 +35,5 @@
 			- [rsync.md](Wiki/Programming/Linux/rsync.md)
 			- [cli.md](Wiki/Programming/Linux/cli.md)
 			- [How-to-install-nix-in-MacOS.md](Wiki/Programming/Linux/How-to-install-nix-in-MacOS.md)
+			- [backend-recomendations-learning.md](Wiki/Programming/Linux/backend-recomendations-learning.md)
 			- [nixos.md](Wiki/Programming/Linux/nixos.md)
