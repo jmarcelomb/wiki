@@ -118,4 +118,16 @@ The next example shows use of `\|` ("or") to delete all lines except those that 
 :.,$g/profile/d
 ```
 
+## Install latest version in Linux script
+
+```bash
+#!/usr/bin/env bash
+ 
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+tar -xzf nvim-linux-x86_64.tar.gz
+rm -f nvim-linux-x86_64.tar.gz
+echo "Add to your shell config"
+printf 'export PATH="$PATH:%s/nvim-linux-x86_64/bin"\n' "$(pwd)"
+```
+
 Reference [here](https://vim.fandom.com/wiki/Delete_all_lines_containing_a_pattern).
