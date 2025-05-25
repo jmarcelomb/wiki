@@ -73,3 +73,17 @@ All the programs I have that require gpu acceleration have a module option for i
 someprogram = pkgs.writeShellScriptBin "someprogram" ''
 ${nixGL} ${pkgs.someprogram}/bin/someprogram "$@"'';
 ```
+
+# Auto upgrade timer
+
+Check its satus:
+
+```bash
+systemctl status nixos-upgrade.timer
+```
+
+Check its logs:
+
+```bash
+journalctl -u nixos-upgrade.service
+```
