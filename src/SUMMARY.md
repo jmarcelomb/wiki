@@ -8,7 +8,7 @@
 		- [docker-multi-stage-builds.md](Wiki/Programming/docker-multi-stage-builds.md)
 		- [neovim.md](Wiki/Programming/neovim.md)
 		- [git-cmds.md](Wiki/Programming/git-cmds.md)
-		- [Promps.md](Wiki/Programming/Promps.md)
+		- [Prompts.md](Wiki/Programming/Prompts.md)
 		- [learning-resources.md](Wiki/Programming/learning-resources.md)
 		- [Keil.md](Wiki/Programming/Keil.md)
 	- [Life](src/Wiki/Life/README.md)
