@@ -11,6 +11,7 @@
 		- [nix-darwin.md](Wiki/Programming/nix-darwin.md)
 		- [neovim.md](Wiki/Programming/neovim.md)
 		- [learning-resources.md](Wiki/Programming/learning-resources.md)
+		- [helix.md](Wiki/Programming/helix.md)
 	- [Life](src/Wiki/Life/README.md)
 		- [paperless-document-types.md](Wiki/Life/paperless-document-types.md)
 		- [Rust](src/Wiki/Programming/Rust/README.md)
