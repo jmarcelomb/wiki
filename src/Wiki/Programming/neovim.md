@@ -57,6 +57,8 @@ Example: `yt,` - yank `t`(il) comma
 
 `gv` - starts visual mode with the previous visual selection. This is useful if you mess up some command, you just u to undo and gv to reselect and try again, or if you want to perform multiple operations on the same visual block
 
+`gi` go to last insert mode
+
 ---
 ## Regex pattern to register
 
