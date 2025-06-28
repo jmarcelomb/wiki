@@ -1,4 +1,12 @@
 ---
+*Datetime:* 22/06/2026 14:52
+
+	"If you aspire to do true work, your probability of success is much higher. Don't aspire the glory, aspire the work."
+		-Elon Musk
+
+Source: https://www.youtube.com/watch?v=cFIlta1GkiE
+
+---
 *Datetime:* 04/03/2025 11:00
 
 	"It’s okay to have feelings, you know. Things that aren’t logical. Science makes us understand how to stay alive longer. Feelings give us the reason to want to."
