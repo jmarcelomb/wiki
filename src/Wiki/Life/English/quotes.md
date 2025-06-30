@@ -1,4 +1,10 @@
 ---
+*Datetime:* 29/06/2026 19:22
+
+	"I hope that, eventually, you’ll realize this life isn’t merely a twist of fate. It was meant for you. Your purpose. A purpose that resonates with every living being. Whether we like it or not, we hold the reins of our own destiny. Nothing is predetermined. And while our intentions may be noble, they are overshadowed by the influence of our actions. Any aspiration for a brighter future stems from actively creating that future. One that mirrors the goodness within us. And that goodness is reflected in how we treat others. We all share a common destiny — a shared future shaped by our countless choices. One potential future is grounded in kindness, trust, and understanding, if we choose to embrace it. We move forward, unwavering, toward a light we cannot yet see. This is not just for those we cherish, but also for those we may never encounter."
+	- Luther’s final words in Mission Impossible — The Final Reckoning.
+
+---
 *Datetime:* 22/06/2026 14:52
 
 	"If you aspire to do true work, your probability of success is much higher. Don't aspire the glory, aspire the work."
