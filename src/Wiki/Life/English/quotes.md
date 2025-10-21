@@ -1,3 +1,11 @@
+—-
+20/10/2025 23:39
+
+“The desire to hold onto past situations and people only leads us back to a place where we do not belong.
+We should be grateful when people enter our lives and grateful when they leave because they make way for new people. We have no control over anything on this planet except ourselves, and it is a disservice to decorate your old ruins.”
+
+Comment in video: https://youtube.com/shorts/xGnylO6E_mI?si=KbszGKKQQF7dBjCV
+
 ---
 *Datetime:* 10/08/2025 14:24
 
