@@ -1,4 +1,8 @@
 —-
+30/10/2025 08:25
+“Inside you are two wolves. One is made of fear, hate, and despair. The other is made of love, hope, and courage. Every day, they fight for control. The one who wins is the one you feed.”
+
+—-
 20/10/2025 23:39
 
 “The desire to hold onto past situations and people only leads us back to a place where we do not belong.
