@@ -11,6 +11,7 @@
 		- [git-cmds.md](Wiki/Programming/git-cmds.md)
 		- [CMake.md](Wiki/Programming/CMake.md)
 		- [neovim.md](Wiki/Programming/neovim.md)
+		- [docker.md](Wiki/Programming/docker.md)
 		- [Prompts.md](Wiki/Programming/Prompts.md)
 	- [Life](src/Wiki/Life/README.md)
 		- [paperless-document-types.md](Wiki/Life/paperless-document-types.md)
