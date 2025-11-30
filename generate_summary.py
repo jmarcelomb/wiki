@@ -32,8 +32,8 @@ def main():
         summary_file.write("# Summary\n\n")
         summary_file.write("- [Introduction](Wiki/README.md)\n\n")
 
-        last_dir = None
-        for path in WIKI.rglob("*.md"):
+        written_dirs = set()
+        for path in sorted(WIKI.rglob("*.md")):
             if path.name.lower() == "readme.md":
                 continue  # Skip README.md files to avoid redundant entries
 
@@ -51,10 +51,15 @@ def main():
             # Adjust the path for relative output
             relative_path = path.relative_to(SRC)
 
-            # Check if directory needs to be added
-            if path.parent not in (last_dir, WIKI):
-                last_dir = path.parent
-                summary_file.write(build_dir(last_dir / "README.md", len(path.parts)))
+            # Write all parent directories that haven't been written yet
+            ancestors = [p for p in path.parents if p != SRC and WIKI in p.parents or p == WIKI]
+            ancestors.reverse()  # Start from the topmost parent
+            for ancestor in ancestors:
+                if ancestor != WIKI and ancestor not in written_dirs:
+                    written_dirs.add(ancestor)
+                    ancestor_relative = ancestor.relative_to(SRC)
+                    level = len(ancestor.parts)
+                    summary_file.write(build_dir(ancestor_relative / "README.md", level + 1))
 
             # Add the markdown entry for the file
             summary_file.write(build_entry(relative_path, len(path.parts)))
