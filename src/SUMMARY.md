@@ -36,6 +36,7 @@
 		- [docker-multi-stage-builds.md](Wiki/Programming/docker-multi-stage-builds.md)
 		- [docker.md](Wiki/Programming/docker.md)
 		- [git-cmds.md](Wiki/Programming/git-cmds.md)
+		- [good-articles.md](Wiki/Programming/good-articles.md)
 		- [helix.md](Wiki/Programming/helix.md)
 		- [learning-resources.md](Wiki/Programming/learning-resources.md)
 		- [neovim.md](Wiki/Programming/neovim.md)
