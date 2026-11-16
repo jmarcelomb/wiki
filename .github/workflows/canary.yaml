@@ -1,0 +1,9 @@
+name: Canary event test
+on:
+    push:
+        branches: ["canary-*"]
+jobs:
+    ping:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "events work"
