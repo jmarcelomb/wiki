@@ -1,0 +1,210 @@
+# Builds the Ninho Windows installer (a branded Element fork) and publishes it
+# as a release on this repo.
+#
+# This is a FALLBACK build host: the pipeline normally lives in
+# jmarcelomb/element-web (tag push / hourly schedule), but GitHub's event
+# processing for that repo stopped delivering events (Nov 2026), so this repo
+# builds the same artifact instead. The workflow checks out element-web at the
+# latest ninho-v* tag and skips itself when that tag already has a release on
+# element-web or here — so the two hosts never build the same version twice,
+# and element-web's own pipeline stays the primary once it recovers.
+#
+# Two jobs, mirroring the upstream pipeline: a Linux job builds the webapp
+# (the full workspace install works there, unlike on Windows, where pnpm fails
+# to run the `prepare` script of the matrix-js-sdk git dependency), and a
+# Windows job downloads the webapp and packages the installer (electron-builder
+# must run on the OS it targets, and the native modules have to match).
+#
+# The build is unsigned, so Windows SmartScreen will warn on first launch
+# ("More info" -> "Run anyway").
+
+name: Build Ninho Windows installer (fallback host)
+
+on:
+    workflow_dispatch:
+    schedule:
+        - cron: "41 * * * *"
+    push:
+        branches:
+            - master
+            - ninho
+
+permissions:
+    contents: write # required to create the release and upload the installer
+
+defaults:
+    run:
+        shell: bash
+
+env:
+    SOURCE_REPO: jmarcelomb/element-web
+
+jobs:
+    gate:
+        name: Resolve release target
+        runs-on: ubuntu-latest
+        outputs:
+            tag: ${{ steps.resolve.outputs.tag }}
+            skip: ${{ steps.resolve.outputs.skip }}
+        steps:
+            - name: Resolve which tag to build (if any)
+              id: resolve
+              env:
+                  GH_TOKEN: ${{ github.token }}
+              run: |
+                  TAG=$(gh api "repos/$SOURCE_REPO/git/matching-refs/tags/ninho-v" --jq '.[].ref' | sed 's|refs/tags/||' | sort -V | tail -1)
+                  echo "latest tag on $SOURCE_REPO: ${TAG:-none}"
+                  # Skip when there is no tag at all, or when the tag is already
+                  # released on the primary host or here.
+                  if [ -z "$TAG" ] \
+                      || gh release view "$TAG" --repo "$SOURCE_REPO" >/dev/null 2>&1 \
+                      || gh release view "$TAG" >/dev/null 2>&1; then
+                      echo "tag=" >> "$GITHUB_OUTPUT"
+                      echo "skip=true" >> "$GITHUB_OUTPUT"
+                  else
+                      echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+                      echo "skip=false" >> "$GITHUB_OUTPUT"
+                  fi
+
+    webapp:
+        name: Build web app
+        runs-on: ubuntu-latest
+        needs: gate
+        if: needs.gate.outputs.skip == 'false'
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+              with:
+                  repository: ${{ env.SOURCE_REPO }}
+                  ref: ${{ needs.gate.outputs.tag }}
+                  persist-credentials: false
+
+            - uses: pnpm/setup@fa36a5ef7dcdefc3a7cb25655c122e00cf6e636e # v3.1.2
+              with:
+                  cache: true
+                  install: false
+
+            - name: Determine version
+              env:
+                  TAG: ${{ needs.gate.outputs.tag }}
+              run: echo "VERSION=${TAG#ninho-v}" >> "$GITHUB_ENV"
+
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+              # No browsers needed: this workflow never runs Playwright.
+              env:
+                  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+
+            - name: Build web app
+              working-directory: apps/web
+              # `pnpm build` runs nx build, whose ^build dependency chain produces
+              # packages/shared-components/dist (web-shared-components' exports point
+              # there, so raw webpack-cli would fail on a clean checkout).
+              run: pnpm run build
+              env:
+                  VERSION: ${{ env.VERSION }}
+
+            - name: Package webapp
+              working-directory: apps/web
+              # Drop any local config.json: the Windows job injects the Ninho config.
+              run: |
+                  rm -f webapp/config.json
+                  mkdir -p dist
+                  tar -czf dist/webapp.tar.gz webapp
+
+            - name: Upload webapp artifact
+              uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+              with:
+                  name: ninho-webapp
+                  path: apps/web/dist/webapp.tar.gz
+                  retention-days: 3
+                  if-no-files-found: error
+
+    installer:
+        name: Build Windows x64 installer
+        runs-on: windows-latest
+        needs: [gate, webapp]
+        steps:
+            # Tweak line endings to make nx happy, workaround for https://github.com/nrwl/nx/issues/35828
+            - name: Configure git line endings
+              run: |
+                  git config --system core.autocrlf false
+                  git config --system core.eol lf
+
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+              with:
+                  repository: ${{ env.SOURCE_REPO }}
+                  ref: ${{ needs.gate.outputs.tag }}
+                  persist-credentials: false
+
+            - name: Download webapp
+              uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
+              with:
+                  name: ninho-webapp
+                  path: apps/web/dist/
+
+            - uses: pnpm/setup@fa36a5ef7dcdefc3a7cb25655c122e00cf6e636e # v3.1.2
+              with:
+                  node-version-file: apps/desktop/.node-version
+                  cache: true
+                  install: false
+
+            - name: Determine version
+              env:
+                  TAG: ${{ needs.gate.outputs.tag }}
+              run: echo "VERSION=${TAG#ninho-v}" >> "$GITHUB_ENV"
+
+            - name: Disable pnpm auto-install before scripts
+              # pnpm 12 re-verifies node_modules before every `pnpm run` and, on
+              # mismatch, runs a full workspace install that includes apps/web's
+              # matrix-js-sdk git dependency, whose prepare script fails on Windows.
+              # The installer build only needs the filtered install below.
+              run: pnpm config set --location project verifyDepsBeforeRun false
+
+            - name: Install desktop dependencies
+              working-directory: apps/desktop
+              # Filtered install like the upstream Windows job: this skips the root
+              # postinstall and apps/web's git dependencies, whose prepare script
+              # breaks pnpm on Windows.
+              run: pnpm install --frozen-lockfile --filter element-desktop
+
+            - name: Bundle webapp into the desktop wrapper
+              working-directory: apps/desktop
+              # The installer version comes from the VERSION env var in the build
+              # step (electron-builder reads it), so no set-version.ts needed here.
+              run: |
+                  tar -xzf ../web/dist/webapp.tar.gz -C ../web/
+                  cp -r ../web/webapp webapp
+                  cp ninho/config.json webapp/config.json
+                  pnpm run asar-webapp
+                  cp ninho/build.json variant.json
+
+            - name: Build installer
+              working-directory: apps/desktop
+              run: pnpm run build --publish never -w squirrel
+              env:
+                  VARIANT_PATH: variant.json
+                  VERSION: ${{ env.VERSION }}
+
+            - name: Upload installer artifact
+              uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+              with:
+                  name: ninho-windows-x64
+                  path: apps/desktop/dist/squirrel-windows*/*Setup*.exe
+                  if-no-files-found: error
+
+            - name: Create release and attach installer
+              env:
+                  GH_TOKEN: ${{ github.token }}
+                  TAG: ${{ needs.gate.outputs.tag }}
+              run: |
+                  cd apps/desktop/dist/squirrel-windows*/
+                  gh release create "$TAG" \
+                      --repo "$GITHUB_REPOSITORY" \
+                      --title "Ninho ${TAG#ninho-}" \
+                      --notes "Ninho ($SOURCE_REPO) installer built from tag \`$TAG\`.
+
+                  - \`Ninho.Setup.*.exe\` — installer (unsigned: Windows SmartScreen warns on first launch, choose More info -> Run anyway)
+                  - \`*-full.nupkg\` — update package consumed by the app's auto-updater
+
+                  Source and canonical releases: https://github.com/$SOURCE_REPO/releases" \
+                      "$(ls *-full.nupkg)" "$(ls *Setup*.exe)"
